@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>tomcat下访问html页面页面乱码 | zone</title>
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="zone">
+  <meta name="description" content="修改conf&#x2F;web.xml 12345678&amp;lt;mime-mapping&amp;gt;  &amp;lt;extension&amp;gt;htm&amp;lt;&#x2F;extension&amp;gt;  &amp;lt;mime-type&amp;gt;text&#x2F;html;charset=utf-8&amp;lt;&#x2F;mime-type&amp;gt;&amp;lt;&#x2F;mime-mapping&amp;gt;&amp;lt;mime-mapping&amp;gt;  &amp;lt;extension&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tomcat下访问html页面页面乱码">
+<meta property="og:url" content="https:&#x2F;&#x2F;liudanping.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;tomcat%E4%B8%8B%E8%AE%BF%E9%97%AEhtml%E9%A1%B5%E9%9D%A2%E9%A1%B5%E9%9D%A2%E4%B9%B1%E7%A0%81&#x2F;index.html">
+<meta property="og:site_name" content="zone">
+<meta property="og:description" content="修改conf&#x2F;web.xml 12345678&amp;lt;mime-mapping&amp;gt;  &amp;lt;extension&amp;gt;htm&amp;lt;&#x2F;extension&amp;gt;  &amp;lt;mime-type&amp;gt;text&#x2F;html;charset=utf-8&amp;lt;&#x2F;mime-type&amp;gt;&amp;lt;&#x2F;mime-mapping&amp;gt;&amp;lt;mime-mapping&amp;gt;  &amp;lt;extension&amp;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-09-14T08:21:04.662Z">
+<meta name="twitter:card" content="summary">
+
+  <meta name="keywords" content="">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="zone">
+  <meta name="msapplication-starturl" content="https://liudanping.github.io/2019/12/09/tomcat%E4%B8%8B%E8%AE%BF%E9%97%AEhtml%E9%A1%B5%E9%9D%A2%E9%A1%B5%E9%9D%A2%E4%B9%B1%E7%A0%81/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="zone">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  
+    <link rel="canonical" href="https://liudanping.github.io/2019/12/09/tomcat%E4%B8%8B%E8%AE%BF%E9%97%AEhtml%E9%A1%B5%E9%9D%A2%E9%A1%B5%E9%9D%A2%E4%B9%B1%E7%A0%81/">
+  
+
+  
+  
+
+  
+  
+  
+
+  <link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/custom.css">
+</head>
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(!a){document.getElementsByTagName("body")[0].className+=" mdui-drawer-body-left"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">zone</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="请输入关键字"><input type="hidden" name="sitesearch" value="https://liudanping.github.io"></form>
+    <div class="search-result"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(a){document.getElementById("sidebar").className+=" mdui-drawer-close"};</script>
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">peter</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">archive</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2019/12/">十二月 2019<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">class</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+        
+          <a href="javascript:;" target="_blank" rel="noopener" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">分类为空</a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+        
+          <a href="javascript:;" target="_blank" rel="noopener" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">标签为空</a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">友情链接</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+          <a href="javascript:;" target="_blank" rel="noopener" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">链接为空</a>
+        
+      </div>
+    </div>
+  </div>
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-10.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">tomcat下访问html页面页面乱码</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2019-12-09 / <i class="iconfont">&#xe601;</i> peter</div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="http://qr.liantu.com/api.php?w=246&m=10&text=https://liudanping.github.io/2019/12/09/tomcat%E4%B8%8B%E8%AE%BF%E9%97%AEhtml%E9%A1%B5%E9%9D%A2%E9%A1%B5%E9%9D%A2%E4%B9%B1%E7%A0%81/">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=tomcat下访问html页面页面乱码&url=https://liudanping.github.io/2019/12/09/tomcat%E4%B8%8B%E8%AE%BF%E9%97%AEhtml%E9%A1%B5%E9%9D%A2%E9%A1%B5%E9%9D%A2%E4%B9%B1%E7%A0%81/&pic=https://liudanping.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=tomcat下访问html页面页面乱码&url=https://liudanping.github.io/2019/12/09/tomcat%E4%B8%8B%E8%AE%BF%E9%97%AEhtml%E9%A1%B5%E9%9D%A2%E9%A1%B5%E9%9D%A2%E4%B9%B1%E7%A0%81/&via=peter" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://liudanping.github.io/2019/12/09/tomcat%E4%B8%8B%E8%AE%BF%E9%97%AEhtml%E9%A1%B5%E9%9D%A2%E9%A1%B5%E9%9D%A2%E4%B9%B1%E7%A0%81/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://liudanping.github.io/2019/12/09/tomcat%E4%B8%8B%E8%AE%BF%E9%97%AEhtml%E9%A1%B5%E9%9D%A2%E9%A1%B5%E9%9D%A2%E4%B9%B1%E7%A0%81/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://liudanping.github.io/2019/12/09/tomcat%E4%B8%8B%E8%AE%BF%E9%97%AEhtml%E9%A1%B5%E9%9D%A2%E9%A1%B5%E9%9D%A2%E4%B9%B1%E7%A0%81/&title=tomcat下访问html页面页面乱码" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=zone&title=tomcat下访问html页面页面乱码&pics=https://liudanping.github.io/images/favicon.png&url=https://liudanping.github.io/2019/12/09/tomcat%E4%B8%8B%E8%AE%BF%E9%97%AEhtml%E9%A1%B5%E9%9D%A2%E9%A1%B5%E9%9D%A2%E4%B9%B1%E7%A0%81/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://liudanping.github.io/2019/12/09/tomcat%E4%B8%8B%E8%AE%BF%E9%97%AEhtml%E9%A1%B5%E9%9D%A2%E9%A1%B5%E9%9D%A2%E4%B9%B1%E7%A0%81/&text=tomcat下访问html页面页面乱码" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <p>修改conf/web.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;mime-mapping&gt;</span><br><span class="line">  &lt;extension&gt;htm&lt;/extension&gt;</span><br><span class="line">  &lt;mime-type&gt;text/html;charset=utf-8&lt;/mime-type&gt;</span><br><span class="line">&lt;/mime-mapping&gt;</span><br><span class="line">&lt;mime-mapping&gt;</span><br><span class="line">  &lt;extension&gt;html&lt;/extension&gt;</span><br><span class="line">  &lt;mime-type&gt;text/html;charset=utf-8&lt;/mime-type&gt;</span><br><span class="line">&lt;/mime-mapping&gt;</span><br></pre></td></tr></table></figure>
+      
+      <blockquote>
+        
+        <strong>本文链接：</strong><br><a href="https://liudanping.github.io/2019/12/09/tomcat%E4%B8%8B%E8%AE%BF%E9%97%AEhtml%E9%A1%B5%E9%9D%A2%E9%A1%B5%E9%9D%A2%E4%B9%B1%E7%A0%81/">https://liudanping.github.io/2019/12/09/tomcat%E4%B8%8B%E8%AE%BF%E9%97%AEhtml%E9%A1%B5%E9%9D%A2%E9%A1%B5%E9%9D%A2%E4%B9%B1%E7%A0%81/</a>
+      </blockquote>
+    </div>
+    <footer class="mdui-card-actions">
+      
+      
+    </footer>
+    
+  </article>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2020 peter<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  
+  <script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+  <script src="/custom.js"></script>
+</body>
+</html>
